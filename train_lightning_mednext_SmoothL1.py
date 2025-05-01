@@ -10,6 +10,7 @@ import yaml
 import argparse
 import os
 
+
 class GDPLightningModel(pl.LightningModule):
     def __init__(self, cfig):
         super(GDPLightningModel, self).__init__()
@@ -20,7 +21,7 @@ class GDPLightningModel(pl.LightningModule):
             kernel_size=cfig['model_params']['kernel_size'],
             deep_supervision=cfig['model_params']['deep_supervision']
         )
-        self.criterion = nn.SmoothL1Loss(beta=0.25)
+        self.criterion = nn.SmoothL1Loss(beta=0.25) 
         self.l1 = nn.L1Loss()
         self.lr = cfig['lr']
         self.num_epochs = cfig['num_epochs']
@@ -35,8 +36,8 @@ class GDPLightningModel(pl.LightningModule):
 
         loss = self.criterion(outputs * self.cfig['scale_out'], labels) * self.cfig['scale_loss']
         l1_loss = self.l1(outputs * self.cfig['scale_out'], labels) * self.cfig['scale_loss']
-        self.log('train_loss', loss, on_step=False, on_epoch=True, prog_bar=True, logger=True, batch_size=self.cfig['loader_params']['train_bs'])
-        self.log('train_l1_loss', l1_loss, on_step=False, on_epoch=True, prog_bar=True, logger=True, batch_size=self.cfig['loader_params']['train_bs'])
+        self.log('train_loss', loss, on_step=False, on_epoch=True, prog_bar=True, logger=True, batch_size=self.cfig['loader_params']['train_bs']) # Track Smooth L1 loss 
+        self.log('train_l1_loss', l1_loss, on_step=False, on_epoch=True, prog_bar=True, logger=True, batch_size=self.cfig['loader_params']['train_bs']) # Track L1 loss
 
         if self.current_epoch % 10 == 0 and batch_idx == 3:
             os.system('nvidia-smi')

@@ -1,0 +1,43 @@
+loader_params: 
+
+    'train_bs': 2
+    'val_bs': 4
+    'csv_root': '/data/meta_data_test.csv'
+    'scale_dose_dict': '/data/PTV_DICT.json'
+    'pat_obj_dict': '/data/Pat_Obj_DICT.json'
+    'num_workers': 4
+
+    'down_HU': -1000
+    'up_HU': 1000
+    'denom_norm_HU': 500
+
+    'in_size': [96, 128, 144]
+    'out_size': [96, 128, 144]
+
+    'norm_oar': True
+    'CatStructures': False
+
+    'dose_div_factor': 10 
+    
+    'use_dist': False
+    
+model_params:
+    num_input_channels: 8
+    out_channels: 1
+    model_id: 'L'
+    kernel_size: 5
+    deep_supervision: False
+    
+lr: 0.0001
+
+num_epochs: 600
+
+act_sig: True
+
+scale_out: 7.5
+
+scale_loss: 4
+
+model_from_lightning: True
+save_model_path: './checkpoints/mednextLK5-SmoothL1Loss-epoch=381-val_loss=0.1115-val_l1_loss=0.2116.ckpt'
+save_pred_path: './predictions'

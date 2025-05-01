@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from nnunet_mednext import create_mednext_v1
-import data_loader
+import data_loader_efficient as data_loader
 import yaml
 import argparse
 import os
