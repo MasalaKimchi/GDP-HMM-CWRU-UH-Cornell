@@ -12,6 +12,7 @@
 - [Repository Structure](#repository-structure)
 - [Model Configuration](#model-configuration)
 - [DataLoader](#dataloader)
+- [Checkpoint](#checkpoint)
 ---
 
 ## Overview
@@ -74,4 +75,4 @@ Our `data_loader_efficient.py` optimizes the baseline `data_loader.py` by:
 
 ## Checkpoint
 
-We will be sharing a link on trained weight of our model soon! 
+The model checkpoint is available at [link](https://drive.google.com/file/d/1ae3EMkcNRUGF0J0vwKpcj7y_4hlWwdNk/view?usp=sharing) 
